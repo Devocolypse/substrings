@@ -9,6 +9,24 @@
 #       increment the count of the substring in the hash
 #       
 # return the hash of substrings found
+def substrings(string, dictionary)
+  count = Hash.new(0)
+  chunked = string.split(' ')
+
+  for word in chunked
+    for substring in dictionary
+      if word.include?(substring)
+        count[substring] += 1
+      end
+    end
+  end
+
+  clean_count = count.delete_if { |key, value| value == 0 }
+  clean_count
+end
+
+# alternative version using reduce
+
 def substrings_reduce(string, dictionary)
   chunked = string.split(' ')
 
