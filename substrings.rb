@@ -9,7 +9,7 @@
 #       increment the count of the substring in the hash
 #       
 # return the hash of substrings found
-def substrings(string, dictionary)
+def substrings_reduce(string, dictionary)
   chunked = string.split(' ')
 
   count = dictionary.reduce(Hash.new(0)) do |result, substring|
