@@ -11,7 +11,7 @@
 # return the hash of substrings found
 def substrings(string, dictionary)
   count = Hash.new(0)
-  chunked = string.split(' ')
+  chunked = string.downcase.split(' ')
 
   for word in chunked
     for substring in dictionary
@@ -28,7 +28,7 @@ end
 # alternative version using reduce
 
 def substrings_reduce(string, dictionary)
-  chunked = string.split(' ')
+  chunked = string.downcase.split(' ')
 
   count = dictionary.reduce(Hash.new(0)) do |result, substring|
     chunked.each do |word|
