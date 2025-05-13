@@ -8,4 +8,19 @@
 #       if the dictionary word is included in the current array word,
 #       increment the count of the substring in the hash
 #       
-# return the hash of substrings found  
+# return the hash of substrings found
+def substrings(string, dictionary)
+  chunked = string.split(' ')
+
+  count = dictionary.reduce(Hash.new(0)) do |result, substring|
+    chunked.each do |word|
+      if word.include?(substring)
+        result[substring] += 1
+      end
+    end
+    result
+  end
+
+  clean_count = count.delete_if { |key, value| value == 0 }
+  clean_count
+end
