@@ -21,15 +21,14 @@ def substrings(string, dictionary)
     end
   end
 
-  clean_count = count.delete_if { |key, value| value == 0 }
-  clean_count
+  count
 end
 
 # alternative version using reduce
 
 def substrings_reduce(string, dictionary)
   chunked = string.downcase.split(' ')
-
+  
   count = dictionary.reduce(Hash.new(0)) do |result, substring|
     chunked.each do |word|
       if word.include?(substring)
@@ -38,7 +37,6 @@ def substrings_reduce(string, dictionary)
     end
     result
   end
-
-  clean_count = count.delete_if { |key, value| value == 0 }
-  clean_count
+  
+  count
 end
